@@ -91,7 +91,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -242,46 +242,81 @@ require("lazy").setup({
 	--
 	-- Use `opts = {}` to force a plugin to be loaded.
 	--
-  --
-  {
-    "vuki656/package-info.nvim",
-    ft = "json",
-    dependencies = "MunifTanjim/nui.nvim",
-    opts = {
-      colors = {
-        up_to_date = "#3C4048", -- Text color for up to date dependency virtual text
-        outdated = "#fffb2b", -- Text color for outdated dependency virtual text
-        invalid = "#ee4b2b", -- Text color for invalid dependency virtual text
-      },
-      hide_unstable_versions = true,
-      package_manager = 'npm'
-    },
-    config = function()
-      -- Package.json plugin
-      require('package-info').setup()
+	--
+	{
+		"vuki656/package-info.nvim",
+		ft = "json",
+		dependencies = "MunifTanjim/nui.nvim",
+		opts = {
+			colors = {
+				up_to_date = "#3C4048", -- Text color for up to date dependency virtual text
+				outdated = "#fffb2b", -- Text color for outdated dependency virtual text
+				invalid = "#ee4b2b", -- Text color for invalid dependency virtual text
+			},
+			hide_unstable_versions = true,
+			package_manager = "npm",
+		},
+		config = function()
+			-- Package.json plugin
+			require("package-info").setup()
 
-      -- Show dependency versions
-      vim.keymap.set({ "n" }, "<LEADER>ns", require("package-info").show, { silent = true, noremap = true , desc = "Show dependency versions"})
+			-- Show dependency versions
+			vim.keymap.set(
+				{ "n" },
+				"<LEADER>ns",
+				require("package-info").show,
+				{ silent = true, noremap = true, desc = "Show dependency versions" }
+			)
 
-      -- Hide dependency versions
-      vim.keymap.set({ "n" }, "<LEADER>nc", require("package-info").hide, { silent = true, noremap = true, desc = "Hide dependency versions" })
+			-- Hide dependency versions
+			vim.keymap.set(
+				{ "n" },
+				"<LEADER>nc",
+				require("package-info").hide,
+				{ silent = true, noremap = true, desc = "Hide dependency versions" }
+			)
 
-      -- Toggle dependency versions
-      vim.keymap.set({ "n" }, "<LEADER>nt", require("package-info").toggle, { silent = true, noremap = true , desc = "Toggle dependency versions" })
+			-- Toggle dependency versions
+			vim.keymap.set(
+				{ "n" },
+				"<LEADER>nt",
+				require("package-info").toggle,
+				{ silent = true, noremap = true, desc = "Toggle dependency versions" }
+			)
 
-      -- Update dependency on the line
-      vim.keymap.set({ "n" }, "<LEADER>nu", require("package-info").update, { silent = true, noremap = true, desc = "Update dependency on the line" })
+			-- Update dependency on the line
+			vim.keymap.set(
+				{ "n" },
+				"<LEADER>nu",
+				require("package-info").update,
+				{ silent = true, noremap = true, desc = "Update dependency on the line" }
+			)
 
-      -- Delete dependency on the line
-      vim.keymap.set({ "n" }, "<LEADER>nd", require("package-info").delete, { silent = true, noremap = true, desc = "Delete the dependency on the line" })
+			-- Delete dependency on the line
+			vim.keymap.set(
+				{ "n" },
+				"<LEADER>nd",
+				require("package-info").delete,
+				{ silent = true, noremap = true, desc = "Delete the dependency on the line" }
+			)
 
-      -- Install a new dependency
-      vim.keymap.set({ "n" }, "<LEADER>ni", require("package-info").install, { silent = true, noremap = true, desc = "Install new dependency" })
+			-- Install a new dependency
+			vim.keymap.set(
+				{ "n" },
+				"<LEADER>ni",
+				require("package-info").install,
+				{ silent = true, noremap = true, desc = "Install new dependency" }
+			)
 
-      -- Install a different dependency version
-      vim.keymap.set({ "n" }, "<LEADER>np", require("package-info").change_version, { silent = true, noremap = true, desc = "Install a different dependency version" })
-    end,
-  },
+			-- Install a different dependency version
+			vim.keymap.set(
+				{ "n" },
+				"<LEADER>np",
+				require("package-info").change_version,
+				{ silent = true, noremap = true, desc = "Install a different dependency version" }
+			)
+		end,
+	},
 	{
 		"kdheepak/lazygit.nvim",
 		lazy = false,
