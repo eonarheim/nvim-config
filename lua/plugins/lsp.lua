@@ -73,6 +73,10 @@ return {
 				--  Useful when your language has ways of declaring types without an actual implementation.
 				map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 
+				vim.keymap.set("n", "ge", function()
+					vim.diagnostic.goto_next()
+				end, { desc = "[G]oto [E]rror" })
+
 				-- Jump to the definition of the word under your cursor.
 				--  This is where a variable was first declared, or where a function is defined, etc.
 				--  To jump back, press <C-t>.
