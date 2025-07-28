@@ -11,6 +11,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.mouse = "a"
 vim.o.showmode = false
+vim.o.winborder = 'rounded'
 
 vim.schedule(function()
 	vim.o.clipboard = "unnamedplus"
@@ -27,7 +28,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.o.signcolumn = "yes"
+vim.o.signcolumn = "no"
 
 -- Decrease update time
 vim.o.updatetime = 250
@@ -66,6 +67,6 @@ vim.o.confirm = true
 
 
 vim.diagnostic.config({
-	virtual_text = true,
+	virtual_text = false,
 	virtual_lines = true
 })
