@@ -72,8 +72,9 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
-
 vim.diagnostic.config({
 	virtual_text = false,
-	virtual_lines = true
+	virtual_lines = true,
 })
+
+vim.keymap.set("n", "<leader>t", ':lua require("floating-term").toggle()<CR>', { noremap = true, silent = true })
