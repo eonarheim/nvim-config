@@ -32,7 +32,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.o.signcolumn = "no"
+vim.o.signcolumn = "auto"
 
 -- Keep me at 140
 vim.o.colorcolumn = "140"
