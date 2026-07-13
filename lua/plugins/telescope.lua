@@ -1,3 +1,12 @@
+local telescope = require("telescope")
+local telescopeConfig = require("telescope.config")
+local builtin = require("telescope.builtin")
+
+local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+table.insert(vimgrep_arguments, "--hidden")
+table.insert(vimgrep_arguments, "--glob")
+table.insert(vimgrep_arguments, "!**/.git/*")
+
 return { -- Fuzzy Finder (files, lsp, etc)
 	"nvim-telescope/telescope.nvim",
 	event = "VimEnter",
@@ -43,15 +52,14 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
 		-- [[ Configure Telescope ]]
 		-- See `:help telescope` and `:help telescope.setup()`
-		require("telescope").setup({
+		telescope.setup({
 			-- You can put your default mappings / updates / etc. in here
 			--  All the info you're looking for is in `:help telescope.setup()`
 			--
-			-- defaults = {
-			--   mappings = {
-			--     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-			--   },
-			-- },
+			defaults = {
+				vimgrep_arguments = vimgrep_arguments,
+				path_display = { "smart" },
+			},
 			-- pickers = {}
 			extensions = {
 				["ui-select"] = {
